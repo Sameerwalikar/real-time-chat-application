@@ -81,7 +81,7 @@ export default function Login({ onAuthSuccess }) {
         <div className="auth-header">
           <div className="auth-logo">
             <MessageSquare size={38} strokeWidth={2.5} />
-            <span>WhatsApp Chat</span>
+            <span>3w messenger</span>
           </div>
           <p className="auth-subtitle">
             {isLogin 

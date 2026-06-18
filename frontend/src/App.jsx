@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Login from './components/Login';
 import Sidebar from './components/Sidebar';
 import ChatArea from './components/ChatArea';
 import OnlineUsersList from './components/OnlineUsersList';
+import LandingPage from './components/LandingPage';
 import { initSocket, disconnectSocket, getSocket } from './socket';
+import './App.css';
 
 export default function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -365,19 +368,7 @@ export default function App() {
     }
   };
 
-  if (loading) {
-    return (
-      <div style={{ display: 'flex', height: '100vh', alignItems: 'center', justifyContent: 'center', backgroundColor: 'var(--bg-app)', color: 'var(--text-primary)' }}>
-        <div style={{ fontSize: '1.2rem', fontWeight: 600 }}>Connecting to Session...</div>
-      </div>
-    );
-  }
-
-  if (!currentUser) {
-    return <Login onAuthSuccess={handleAuthSuccess} />;
-  }
-
-  return (
+  const chatShell = (
     <div className="app-container">
       <div className="app-wrapper">
         {/* Left Side: Navigation Sidebar */}
@@ -494,5 +485,22 @@ export default function App() {
         )}
       </div>
     </div>
+  );
+
+  if (loading) {
+    return (
+      <div style={{ display: 'flex', height: '100vh', alignItems: 'center', justifyContent: 'center', backgroundColor: 'var(--bg-app)', color: 'var(--text-primary)' }}>
+        <div style={{ fontSize: '1.2rem', fontWeight: 600 }}>Connecting to Session...</div>
+      </div>
+    );
+  }
+
+  return (
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/login" element={currentUser ? <Navigate to="/app" replace /> : <Login onAuthSuccess={handleAuthSuccess} />} />
+      <Route path="/app" element={currentUser ? chatShell : <Navigate to="/login" replace />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
   );
 }
