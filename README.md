@@ -34,7 +34,7 @@ https://sameers-real-time-chat-application.vercel.app/
 
 > Add screenshot here
 
-![Login Page](./screenshots/login-page.png)
+![Login Page](./ss/login.png)
 
 ---
 
@@ -42,7 +42,7 @@ https://sameers-real-time-chat-application.vercel.app/
 
 > Add screenshot here
 
-![Register Page](./screenshots/register-page.png)
+![Register Page](./ss/register.png)
 
 ---
 
@@ -50,7 +50,7 @@ https://sameers-real-time-chat-application.vercel.app/
 
 > Add screenshot here
 
-![Chat Dashboard](./screenshots/chat-dashboard.png)
+![Chat Dashboard](./ss/chat.png)
 
 ---
 

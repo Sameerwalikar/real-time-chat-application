@@ -62,6 +62,33 @@ export default function ChatArea({
   }, [activeRoom, API_URL, token]);
 
   // Subscribe to real-time message events for active room
+
+  useEffect(() => {
+  if (!socket || !activeRoom) return;
+
+  console.log("Joining room:", activeRoom._id);
+
+  socket.emit("joinRoom", {
+    roomId: activeRoom._id,
+  });
+
+  return () => {
+    socket.emit("leaveRoom", {
+      roomId: activeRoom._id,
+    });
+  };
+}, [socket, activeRoom]);
+useEffect(() => {
+  if (!socket) return;
+
+  socket.on("error", (err) => {
+    console.error("Socket Error:", err);
+  });
+
+  return () => {
+    socket.off("error");
+  };
+}, [socket]);
   useEffect(() => {
     if (!socket || !activeRoom) return;
 
