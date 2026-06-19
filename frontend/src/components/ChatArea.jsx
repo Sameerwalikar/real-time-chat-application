@@ -49,6 +49,7 @@ export default function ChatArea({
       } finally {
         setLoading(false);
       }
+      console.log("Fetching messages for room:", activeRoom._id);
     };
 
     fetchMessages();
@@ -59,14 +60,12 @@ export default function ChatArea({
     if (socket) {
       socket.emit('typing', { roomId: activeRoom._id, isTyping: false });
     }
-  }, [activeRoom, API_URL, token]);
+ }, [activeRoom?._id, token]);
 
   // Subscribe to real-time message events for active room
 
-  useEffect(() => {
-  if (!socket || !activeRoom) return;
-
-  console.log("Joining room:", activeRoom._id);
+ useEffect(() => {
+  if (!socket || !activeRoom?._id) return;
 
   socket.emit("joinRoom", {
     roomId: activeRoom._id,
@@ -77,27 +76,35 @@ export default function ChatArea({
       roomId: activeRoom._id,
     });
   };
-}, [socket, activeRoom]);
+}, [activeRoom?._id]);
 useEffect(() => {
   if (!socket) return;
 
-  socket.on("error", (err) => {
+  const handleError = (err) => {
     console.error("Socket Error:", err);
-  });
+  };
+
+  socket.on("error", handleError);
 
   return () => {
-    socket.off("error");
+    socket.off("error", handleError);
   };
 }, [socket]);
 
   useEffect(() => {
     if (!socket || !activeRoom) return;
 
-    const handleIncomingMessage = (message) => {
-      if (message.room === activeRoom._id) {
-        setMessages((prev) => [...prev, message]);
-      }
-    };
+   const handleIncomingMessage = (message) => {
+  if (message.room !== activeRoom._id) return;
+
+  setMessages((prev) => {
+    const exists = prev.some((m) => m._id === message._id);
+
+    if (exists) return prev;
+
+    return [...prev, message];
+  });
+};
 
     socket.on('message', handleIncomingMessage);
 
