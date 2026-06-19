@@ -1,125 +1,109 @@
 import { useNavigate } from 'react-router-dom';
-import { MessageSquare, Sparkles, Users, ShieldCheck, ChevronDown } from 'lucide-react';
-import qrCode from "../assets/qrcode_taskplanet.org.png";
-import phone1 from "../assets/attachment-phone-1.png"
-import phone2 from "../assets/attachment-phone-2.png"
+import { Users, Lock, Zap, MessageCircle } from 'lucide-react';
+import img1 from "../assets/attachment-phone-1.png"
+import img2 from "../assets/attachment-phone-2.png"
+import logo from "../assets/3w-logo.png";
+
 
 export default function LandingPage() {
   const navigate = useNavigate();
 
   return (
-    <main className="landing-page">
-      <section className="landing-hero-section">
-        <div className="landing-hero-copy">
-          <span className="landing-pill">3w's exclusive messenger app</span>
-          <h1>Speak Like Nobody’s Listening</h1>
-          <p>
-            3w messenger is an easy-to-use instant messaging experience that helps you stay connected.
-            Simple, secure, and built for teams, groups, and everyday conversations.
+    <main className="landing-main">
+      <header className="landing-header">
+  <div className="landing-brand">
+    <img src={logo} alt="3W Messenger" className="landing-logo" />
+    <span>3W Messenger</span>
+  </div>
+
+  <div className="landing-header-actions">
+    <button
+      className="header-login-btn"
+      onClick={() => navigate("/login")}
+    >
+      Login
+    </button>
+
+    <button
+      className="header-start-btn"
+      onClick={() => navigate("/login")}
+    >
+      Get Started
+    </button>
+  </div>
+</header>
+      {/* Hero Section */}
+      <section className="hero-section">
+        <div className="hero-content">
+          <span className="hero-badge">3w's exclusive messaging app </span>
+          <h1 className="hero-title">Connect Instantly, Chat Securely</h1>
+          <p className="hero-description">
+            3w Messenger brings secure, fast, and reliable messaging to everyone. 
+            Talk to friends, create groups, and share moments.
           </p>
 
-          <div className="landing-hero-buttons">
-            <button className="landing-btn secondary" onClick={() => navigate('/login')}>
-              Login
+          <div className="hero-cta">
+            <button className="cta-btn primary" onClick={() => navigate('/login')}>
+              Get Started
             </button>
-          </div>
-
-          
-        </div>
-
-        <div className="landing-hero-visual">
-          <div className="landing-hero-phone">
-            <img
-              src="https://www.arattai.in/sites/oweb/images/arattai/nhome/banner-img3.jpg"
-              alt="Hero"
-            />
-          </div>
-          <div className="landing-hero-bubbles">
-            <img
-              className="landing-bubble bubble-1"
-              src="https://www.arattai.in/sites/oweb/images/arattai/nhome/communicate-bubble1.png"
-              alt="bubble"
-            />
-            <img
-              className="landing-bubble bubble-2"
-              src="https://www.arattai.in/sites/oweb/images/arattai/nhome/communicate-bubble2.png"
-              alt="bubble"
-            />
-            {/* Attached phone mockups (place the provided images at /public/assets/) */}
-            
-          </div>
-        </div>
-      </section>
-
-      <section className="landing-features-section">
-        <div className="landing-feature-card">
-          <Users size={24} />
-          <h3>Communicate</h3>
-          <p>Use instant chat and groups to stay connected with your friends and family.</p>
-        </div>
-        <div className="landing-feature-card">
-          <ShieldCheck size={24} />
-          <h3>Secure</h3>
-          <p>We value privacy. Direct messages and calls are encrypted end-to-end.</p>
-        </div>
-        <div className="landing-feature-card">
-          <Sparkles size={24} />
-          <h3>Emote</h3>
-          <p>Express yourself with stickers, reactions, and fast rich messaging.</p>
-        </div>
-      </section>
-
-      <section className="landing-faq-section">
-        <div className="faq-header">
-          <h2>Frequently Asked Questions</h2>
-          <p>Everything you need to know before you start using 3w messenger.</p>
-        </div>
-
-        <div className="faq-list">
-          {[
-            {
-              question: 'Is 3w messenger free?',
-              answer:
-                'Yes, it is a free, simple, secure way to connect with friends and family across devices.',
-            },
-            {
-              question: 'What can I use 3w messenger for?',
-              answer:
-                'Send text and voice messages, make calls, share media, and create groups and channels for easy communication.',
-            },
-            {
-              question: 'Is 3w messenger safe?',
-              answer:
-                '3w messenger is designed with privacy in mind, and direct chats are protected by strong encryption.',
-            },
-          ].map((item) => (
-            <details key={item.question} className="faq-item">
-              <summary>
-                {item.question}
-                <ChevronDown size={18} />
-              </summary>
-              <p>{item.answer}</p>
-            </details>
-          ))}
-        </div>
-      </section>
-
-      <section className="landing-cta-section">
-        <div className="landing-cta-copy">
-          <h2>So what are you waiting for?</h2>
-          <div className="landing-cta-buttons">
-            <button className="landing-btn secondary" onClick={() => navigate('/login')}>
+            <button className="cta-btn secondary" onClick={() => navigate('/login')}>
               Login
             </button>
           </div>
         </div>
-        <div className="landing-cta-visual">
-          <div className="qr-card-alt">
-            <img
-            src={qrCode}
-              alt="QR Code"
+
+        <div className="hero-visual">
+          {/* Phone Mockups Stack */}
+          <div className="phones-container">
+            <img 
+              src={img1}
+              alt="Phone mockup 1" 
+              className="phone phone-back"
+            />
+            <img 
+              src={img2}
+              alt="Phone mockup 2" 
+              className="phone phone-front"
             />
           </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="features-section">
+        <h2>Why Choose 3w Messenger?</h2>
+        <div className="features-grid">
+          <div className="feature-item">
+            <Lock size={32} />
+            <h3>End-to-End Encrypted</h3>
+            <p>Your messages stay private. Only you and recipients can read them.</p>
+          </div>
+          <div className="feature-item">
+            <Users size={32} />
+            <h3>Groups & Channels</h3>
+            <p>Create communities, share content, and stay connected with groups.</p>
+          </div>
+          <div className="feature-item">
+            <Zap size={32} />
+            <h3>Lightning Fast</h3>
+            <p>Instant message delivery with real-time online status updates.</p>
+          </div>
+          <div className="feature-item">
+            <MessageCircle size={32} />
+            <h3>Rich Media Support</h3>
+            <p>Share photos, documents, and multimedia with ease.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="cta-section">
+        <div className="cta-content">
+          <h2>Ready to Join?</h2>
+          <p>Start chatting securely today. No credit card required.</p>
+          <button className="cta-btn primary large" id="btn1" onClick={() => navigate('/login')}>
+            Create Account Now
+          </button>
         </div>
       </section>
     </main>

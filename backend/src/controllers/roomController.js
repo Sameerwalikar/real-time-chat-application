@@ -5,7 +5,7 @@ import User from '../models/User.js';
 const generate6DigitCode = () => Math.floor(100000 + Math.random() * 900000).toString();
 
 // Ensure generated code is unique (limited retries)
-const generateUniqueJoinCode = async () => {
+export const generateUniqueJoinCode = async () => {
   const maxAttempts = 10;
   for (let i = 0; i < maxAttempts; i++) {
     const code = generate6DigitCode();
