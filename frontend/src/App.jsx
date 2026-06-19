@@ -371,40 +371,30 @@ export default function App() {
   const chatShell = (
     <div className="app-container">
       <div className="app-wrapper">
-        <div
-  className={`sidebar-container ${
-    !activeRoom ? "active-mobile" : ""
-  }`}
->
-  <Sidebar
-    currentUser={currentUser}
-    rooms={rooms}
-    activeRoom={activeRoom}
-    onRoomSelect={handleRoomSelect}
-    onCreateGroupClick={() => setShowCreateGroup(true)}
-    onLogout={handleLogout}
-    onOpenJoinModal={handleOpenJoinModal}
-    theme={theme}
-    setTheme={setTheme}
-    typingStates={typingStates}
-  />
-</div>
+        {/* Left Side: Navigation Sidebar */}
+        <Sidebar
+          currentUser={currentUser}
+          rooms={rooms}
+          activeRoom={activeRoom}
+          onRoomSelect={handleRoomSelect}
+          onCreateGroupClick={() => setShowCreateGroup(true)}
+          onLogout={handleLogout}
+          onOpenJoinModal={handleOpenJoinModal}
+          theme={theme}
+          setTheme={setTheme}
+          typingStates={typingStates}
+        />
 
-<div
-  className={`chat-container ${
-    activeRoom ? "active-mobile" : ""
-  }`}
->
-  <ChatArea
-    currentUser={currentUser}
-    activeRoom={activeRoom}
-    typingStates={typingStates}
-    onRoomInfoClick={() => setShowRightDrawer(!showRightDrawer)}
-    onBackClick={() => setActiveRoom(null)}
-    onOpenJoinModal={handleOpenJoinModal}
-    onJoinByCode={handleJoinByCode}
-  />
-</div>
+        {/* Right Side: Chat Container */}
+        <ChatArea
+          currentUser={currentUser}
+          activeRoom={activeRoom}
+          typingStates={typingStates}
+          onRoomInfoClick={() => setShowRightDrawer(!showRightDrawer)}
+          onBackClick={() => setActiveRoom(null)}
+          onOpenJoinModal={handleOpenJoinModal}
+          onJoinByCode={handleJoinByCode}
+        />
 
         {/* Dynamic sliding drawer for Chat Info & Participants */}
         <OnlineUsersList
