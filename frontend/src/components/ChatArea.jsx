@@ -89,6 +89,7 @@ useEffect(() => {
     socket.off("error");
   };
 }, [socket]);
+
   useEffect(() => {
     if (!socket || !activeRoom) return;
 
