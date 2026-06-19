@@ -54,21 +54,6 @@ https://sameers-real-time-chat-application.vercel.app/
 
 ---
 
-### Group Chat Interface
-
-> Add screenshot here
-
-![Group Chat](./screenshots/group-chat.png)
-
----
-
-### Mobile Responsive View
-
-> Add screenshot here
-
-![Mobile View](./screenshots/mobile-view.png)
-
----
 
 ## ✨ Features
 
