@@ -5,7 +5,7 @@ let socket = null;
 export const initSocket = (token) => {
   if (socket) return socket;
 
-  const socketUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
+  const socketUrl = import.meta.env.VITE_BACKEND_URL || 'https://real-time-chat-application-6c6y.onrender.com';
   
   socket = io(socketUrl, {
     auth: {
