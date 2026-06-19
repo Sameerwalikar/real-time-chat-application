@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Search, Phone, Video, Send, Smile, Paperclip, MoreVertical, Menu } from 'lucide-react';
 import { getSocket } from '../socket';
 
+
 export default function ChatArea({
   currentUser,
   activeRoom,
