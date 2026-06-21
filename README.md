@@ -296,12 +296,6 @@ GET /api/messages/:roomId
 
 Computer Engineering Student | Full Stack Developer
 
-GitHub: [Add GitHub Link]
-
-LinkedIn: [Add LinkedIn Profile Link]
-
-Portfolio: [Add Portfolio Link]
-
 ---
 
 ## 📄 License
