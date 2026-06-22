@@ -183,7 +183,7 @@ useEffect(() => {
         <div className="welcome-icon-circle">
           <Paperclip size={48} />
         </div>
-        <h2 className="welcome-title">3w chat app</h2>
+        <h2 className="welcome-title">RippleChat</h2>
         <p className="welcome-desc">
           Send and receive messages instantly. Select any contact or room from the sidebar, or create a new room to begin.
         </p>
